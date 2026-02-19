@@ -1,52 +1,34 @@
 import Link from "next/link";
-import { internalPathFromHref } from "@/lib/content";
-import type { LegacyMenuItem, LegacyPage } from "@/types/content";
+import type { InternalMenuItem } from "@/types/content";
 
 type Props = {
-  menu: LegacyMenuItem[];
-  pages: LegacyPage[];
+  menuItems: InternalMenuItem[];
 };
 
-export function Navigation({ menu, pages }: Props) {
-  const corePages = pages.filter(
-    (page) =>
-      page.path === "/" ||
-      page.path.startsWith("/solutions/") ||
-      page.path.startsWith("/contact") ||
-      page.path.startsWith("/blogs/"),
-  );
-
+export function Navigation({ menuItems }: Props) {
   return (
-    <header className="top-shell">
-      <div className="container shell-row">
-        <Link href="/" className="brand">
-          peaq reboot
+    <header className="topbar">
+      <div className="container topbar-row">
+        <Link href="/" className="brand-lockup">
+          <span className="brand-mark">peaq12</span>
+          <span className="brand-sub">enterprise editorial</span>
         </Link>
-        <nav className="main-nav">
-          {menu.map((item) => {
-            const internal = internalPathFromHref(item.href);
-            if (internal) {
-              return (
-                <Link key={`${item.label}-${item.href}`} href={internal}>
-                  {item.label}
-                </Link>
-              );
-            }
-            return (
+
+        <nav className="menu-list" aria-label="Main navigation">
+          {menuItems.map((item) =>
+            item.external ? (
               <a key={`${item.label}-${item.href}`} href={item.href} target="_blank" rel="noreferrer">
                 {item.label}
               </a>
-            );
-          })}
+            ) : (
+              <Link key={`${item.label}-${item.path}`} href={item.path || "/"}>
+                {item.label}
+              </Link>
+            ),
+          )}
+          <Link href="/blogs">News</Link>
           <Link href="/library">Library</Link>
         </nav>
-      </div>
-      <div className="container sub-nav">
-        {corePages.slice(0, 12).map((page) => (
-          <Link key={page.path} href={page.path}>
-            {page.title}
-          </Link>
-        ))}
       </div>
     </header>
   );

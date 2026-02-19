@@ -2,56 +2,46 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const dataPath = path.join(root, "src", "data", "site-structure.json");
+const dataPath = path.join(root, "src", "data", "rich-content.json");
 
 const raw = await fs.readFile(dataPath, "utf8");
 const data = JSON.parse(raw);
 
-if (!Array.isArray(data.pages) || data.pages.length === 0) {
-  throw new Error("No pages in site-structure.json");
+if (!Array.isArray(data.routePaths) || data.routePaths.length < 40) {
+  throw new Error("Route coverage is unexpectedly low in rich-content.json");
 }
 
-if (!Array.isArray(data.primary_menu) || data.primary_menu.length === 0) {
-  throw new Error("No primary_menu items found");
+if (!Array.isArray(data.menu) || data.menu.length < 5) {
+  throw new Error("Main menu is incomplete in rich-content.json");
 }
 
-const paths = new Set(data.pages.map((p) => normalizePath(p.path)));
-if (!paths.has("/")) {
-  throw new Error("Home path '/' is missing from content pages");
+if (!Array.isArray(data.posts) || data.posts.length < 25) {
+  throw new Error("Post corpus is unexpectedly small in rich-content.json");
 }
 
-for (const item of data.primary_menu) {
-  const href = String(item.href || "");
-  let maybePath = null;
-  try {
-    const u = new URL(href);
-    if (u.hostname === "peaq.ch" || u.hostname === "www.peaq.ch") {
-      maybePath = normalizePath(u.pathname);
-    }
-  } catch {
-    if (href.startsWith("/")) maybePath = normalizePath(href);
+const requiredRoutes = ["/", "/solutions/sam4h", "/solutions/ioportal", "/contact", "/blogs/index"];
+for (const route of requiredRoutes) {
+  if (!data.routePaths.includes(route)) {
+    throw new Error(`Required legacy route is missing: ${route}`);
   }
+}
 
-  if (maybePath && !paths.has(maybePath)) {
-    throw new Error(`Menu link not found in migrated pages: ${maybePath}`);
-  }
+const forbiddenMenuLabel = data.menu.find((item) => /page\s*-\s*\d+/i.test(String(item.label || "")));
+if (forbiddenMenuLabel) {
+  throw new Error(`Menu still contains pagination placeholder: ${forbiddenMenuLabel.label}`);
 }
 
 console.log(
   JSON.stringify(
     {
       ok: true,
-      pages: data.pages.length,
-      menu: data.primary_menu.length,
+      routes: data.routePaths.length,
+      posts: data.posts.length,
+      menu: data.menu.length,
+      authors: Array.isArray(data.authors) ? data.authors.length : 0,
+      categories: Array.isArray(data.categories) ? data.categories.length : 0,
     },
     null,
     2,
   ),
 );
-
-function normalizePath(pathLike) {
-  let out = String(pathLike || "/").trim();
-  if (!out.startsWith("/")) out = `/${out}`;
-  if (out !== "/" && out.endsWith("/")) out = out.slice(0, -1);
-  return out;
-}

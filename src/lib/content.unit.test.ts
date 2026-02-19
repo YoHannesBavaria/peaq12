@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { internalPathFromHref, normalizePath, pathToSlugParts, slugPartsToPath } from "./content";
+import { canonicalInternalPath, internalPathFromHref, normalizePath, pathToSlugParts, slugPartsToPath } from "./content";
 
 describe("content utils", () => {
   it("normalizes paths", () => {
@@ -8,14 +8,19 @@ describe("content utils", () => {
   });
 
   it("roundtrips slug parts", () => {
-    const path = "/solutions/sam4h";
-    expect(slugPartsToPath(pathToSlugParts(path))).toBe(path);
+    const route = "/solutions/sam4h";
+    expect(slugPartsToPath(pathToSlugParts(route))).toBe(route);
     expect(slugPartsToPath([])).toBe("/");
+  });
+
+  it("canonicalizes legacy blog aliases", () => {
+    expect(canonicalInternalPath("/blogs/index/")).toBe("/blogs");
+    expect(canonicalInternalPath("/blogs/index/page/2/index.html")).toBe("/blogs/page/2");
   });
 
   it("maps internal hrefs only", () => {
     expect(internalPathFromHref("https://www.peaq.ch/contact")).toBe("/contact");
-    expect(internalPathFromHref("/blogs/index/")).toBe("/blogs/index");
+    expect(internalPathFromHref("https://www.peaq.ch/blogs/index/")).toBe("/blogs");
     expect(internalPathFromHref("https://example.com/x")).toBeNull();
   });
 });

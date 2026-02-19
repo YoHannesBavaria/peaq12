@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Sora, Space_Grotesk } from "next/font/google";
+import { Manrope, Merriweather } from "next/font/google";
 import { Navigation } from "@/components/navigation";
 import { getSiteContent } from "@/lib/content";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "peaq12 - contemporary enterprise",
-  description: "Contemporary enterprise redesign of peaq.ch with full migrated content and Sanity bridge.",
+  title: "peaq12 - Structured Enterprise Editorial",
+  description: "Relaunch concept with strong content hierarchy, full legacy coverage, and business-focused readability.",
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -24,11 +25,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sora.variable} ${spaceGrotesk.variable}`}>
-        <Navigation menu={content.menu} pages={content.pages} />
+      <body className={`${merriweather.variable} ${manrope.variable}`}>
+        <Navigation menuItems={content.menuItems} />
         {children}
       </body>
     </html>
   );
 }
-
