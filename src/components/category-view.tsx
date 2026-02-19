@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PostCard } from "@/components/post-card";
 import type { RichCategory, RichPost } from "@/types/content";
 
@@ -20,6 +21,13 @@ export function CategoryView({ category, posts }: Props) {
           <PostCard key={post.path} post={post} />
         ))}
       </section>
+
+      {posts.length === 0 ? (
+        <section className="empty-state">
+          <p>No direct posts were found for this legacy category.</p>
+          <Link href="/blogs">Open all blog posts</Link>
+        </section>
+      ) : null}
     </main>
   );
 }

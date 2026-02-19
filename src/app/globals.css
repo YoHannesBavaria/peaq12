@@ -423,6 +423,25 @@ h3 {
   gap: 0.85rem;
 }
 
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1rem;
+  color: #5f6d76;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+.empty-state a {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: #934116;
+  font-weight: 700;
+}
+
 .solution-hero {
   display: grid;
   gap: 1rem;

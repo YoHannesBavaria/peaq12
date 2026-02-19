@@ -209,6 +209,23 @@ export function resolveRoute(pathname: string, content: SiteContent): ResolvedRo
     return { kind: "category", path, category, posts };
   }
 
+  const categoryMatch = path.match(/^\/category\/([^/]+)$/);
+  if (categoryMatch) {
+    const posts = content.posts.filter((postItem) => normalizePath(postItem.category.path) === path);
+    const slug = categoryMatch[1];
+    return {
+      kind: "category",
+      path,
+      category: {
+        path,
+        slug,
+        name: slugToLabel(slug),
+        count: posts.length,
+      },
+      posts,
+    };
+  }
+
   const author = content.authors.find((item) => normalizePath(item.path) === path);
   if (author) {
     const posts = content.posts.filter((postItem) => normalizePath(postItem.author.path) === path);
@@ -300,4 +317,12 @@ function toInternalMenuItem(item: { label: string; href: string }): InternalMenu
     path,
     external: path === null,
   };
+}
+
+function slugToLabel(value: string) {
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
 }
