@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-sora);
+  --bg: #f5f5f2;
+  --paper: #fffdf9;
+  --ink: #21272b;
+  --muted: #5e686f;
+  --line: #ddd7cf;
+  --brand: #d86a2d;
+  --brand-soft: #ffe2cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background:
+    linear-gradient(140deg, #f4f2ed, #f7f7f5 35%, #efede7),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.top-shell {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--line);
+  background: rgba(248, 245, 239, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.shell-row {
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.main-nav,
+.sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.main-nav a,
+.sub-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  background: #fff;
+  color: #49535a;
+  font-size: 0.84rem;
+}
+
+.main-nav a:hover,
+.sub-nav a:hover {
+  border-color: #bcb4a8;
+  color: var(--ink);
+}
+
+.sub-nav {
+  padding-bottom: 0.85rem;
+}
+
+.page-stack {
+  display: grid;
+  gap: 1.2rem;
+  padding-block: 1.5rem 3rem;
+}
+
+.hero,
+.article-shell,
+.content-wall,
+.library-group,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+}
+
+.hero {
+  padding: clamp(1.4rem, 2.4vw, 2.2rem);
+}
+
+.hero-cobalt {
+  background:
+    radial-gradient(circle at 95% 10%, rgba(216, 106, 45, 0.18), transparent 32%),
+    var(--paper);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #7f837f;
+  font-size: 0.76rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), sans-serif;
+  margin: 0;
+  line-height: 1.14;
+}
+
+h1 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.9rem, 4.2vw, 3.2rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+.lede {
+  margin-top: 0.85rem;
+  color: #58636b;
+  max-width: 72ch;
+  line-height: 1.65;
+}
+
+.hero-actions {
+  margin-top: 1.05rem;
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.9rem;
+  font-weight: 600;
+}
+
+.btn.solid {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn.ghost {
+  background: #fff;
+}
+
+.panel-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.panel {
+  padding: 0.95rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.panel p,
+.article-list p,
+.article-body p {
+  margin: 0;
+  color: #606970;
+  line-height: 1.62;
+}
+
+.content-wall {
+  padding: 1rem;
+}
+
+.wall-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.wall-head span,
+.source-badge,
+.library-group span {
+  color: #7a7f82;
+  font-size: 0.84rem;
+}
+
+.article-list {
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.article-list article {
+  border-top: 1px solid #ebe5dc;
+  padding-top: 0.85rem;
+}
+
+.article-shell {
+  padding: clamp(1rem, 2vw, 1.8rem);
+}
+
+.article-body {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.72rem;
+}
+
+.library-group {
+  padding: 1rem;
+}
+
+.library-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.library-group li {
+  border-top: 1px solid #ebe4db;
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .shell-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0.7rem;
+    padding-bottom: 0.25rem;
+  }
+}
