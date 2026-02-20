@@ -20,7 +20,7 @@ const HOME_HIGHLIGHTS: ProductHighlight[] = [
     description:
       "Automate volume and replication management for Hitachi block storage with robust, auditable workflows and rapid execution.",
     href: "/solutions/sam4h",
-    image: "https://www.peaq.ch/assets/images/sam4h/sam4h_screenshot1_ipad2.png",
+    image: "/assets/images/sam4h/sam4h_screenshot1_ipad2.png",
   },
   {
     title: "IOportal",
@@ -28,7 +28,7 @@ const HOME_HIGHLIGHTS: ProductHighlight[] = [
     description:
       "Cloud-native visibility into storage performance with anomaly detection, proactive health checks, and intuitive dashboards.",
     href: "/solutions/ioportal",
-    image: "https://www.peaq.ch/assets/images/ioportal/ioportal_home.png",
+    image: "/assets/images/ioportal/ioportal_home.png",
   },
   {
     title: "X-Charging",
@@ -36,7 +36,7 @@ const HOME_HIGHLIGHTS: ProductHighlight[] = [
     description:
       "Customer-specific cross-charging reports linking infrastructure usage with real cost-center accountability.",
     href: "/contact",
-    image: "https://www.peaq.ch/assets/images/x-charging/x-charging-w-logo.png",
+    image: "/assets/images/x-charging/x-charging-w-logo.png",
   },
 ];
 
@@ -47,7 +47,7 @@ const SOLUTIONS: Record<"sam4h" | "ioportal", SolutionSpec> = {
     strapline: "Smart Storage Provisioning",
     summary:
       "SAM4H accelerates Hitachi block storage operations with safe automation, role separation, and enterprise-grade replication workflows.",
-    heroImage: "https://www.peaq.ch/assets/images/sam4h/sam4h_screenshot1_ipad2.png",
+    heroImage: "/assets/images/sam4h/sam4h_screenshot1_ipad2.png",
     cta: [
       { label: "Free Trial License", href: "https://try.sam4h.com", external: true },
       { label: "Request Demo", href: "https://capture.navattic.com/cm0ayrdxu000103l8dwnngans", external: true },
@@ -56,31 +56,31 @@ const SOLUTIONS: Record<"sam4h" | "ioportal", SolutionSpec> = {
       {
         title: "Volumes / Replications",
         description: "Accelerate provisioning and lifecycle operations for enterprise volumes and replication pairs.",
-        icon: "https://www.peaq.ch/assets/images/icons/database.png",
+        icon: "/assets/images/icons/database.png",
       },
       {
         title: "Automation",
         description: "Rules-based automation from engineering setup to day-to-day operations with full traceability.",
-        icon: "https://www.peaq.ch/assets/images/icons/cogs.png",
+        icon: "/assets/images/icons/cogs.png",
       },
       {
         title: "Service Quality",
         description: "Consistent standards and reduced operational risk with policy-driven workflows and safeguards.",
-        icon: "https://www.peaq.ch/assets/images/icons/heartbeat.png",
+        icon: "/assets/images/icons/heartbeat.png",
       },
       {
         title: "REST API",
         description: "Integrate SAM4H into CI/CD, change workflows, and orchestration tools via API endpoints.",
-        icon: "https://www.peaq.ch/assets/images/icons/searchengin.png",
+        icon: "/assets/images/icons/searchengin.png",
       },
     ],
     screenshots: [
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_dashboard.png",
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_array_mgmt.png",
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_cluster_fabric_report.png",
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_cluster_lun_report.png",
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_dpv_config_template.png",
-      "https://www.peaq.ch/assets/images/sam4h/screenshot_rest_api.png",
+      "/assets/images/sam4h/screenshot_dashboard.png",
+      "/assets/images/sam4h/screenshot_array_mgmt.png",
+      "/assets/images/sam4h/screenshot_cluster_fabric_report.png",
+      "/assets/images/sam4h/screenshot_cluster_lun_report.png",
+      "/assets/images/sam4h/screenshot_dpv_config_template.png",
+      "/assets/images/sam4h/screenshot_rest_api.png",
     ],
   },
   ioportal: {
@@ -89,7 +89,7 @@ const SOLUTIONS: Record<"sam4h" | "ioportal", SolutionSpec> = {
     strapline: "Storage Performance Monitoring",
     summary:
       "IOportal combines analytics, benchmarking, and proactive service insights to keep Hitachi storage arrays efficient and predictable.",
-    heroImage: "https://www.peaq.ch/assets/images/ioportal/ioportal_home.png",
+    heroImage: "/assets/images/ioportal/ioportal_home.png",
     cta: [
       { label: "Explore Features", href: "/blogs" },
       { label: "Contact peaq", href: "/contact" },
@@ -98,36 +98,53 @@ const SOLUTIONS: Record<"sam4h" | "ioportal", SolutionSpec> = {
       {
         title: "Anomaly Radar",
         description: "Identify and prioritize abnormal behavior quickly with statistics-driven anomaly detection.",
-        icon: "https://www.peaq.ch/assets/images/icons/chart-bar.png",
+        icon: "/assets/images/icons/chart-bar.png",
       },
       {
         title: "Health Checks",
         description: "Periodic expert reviews and long-term trend analysis to prevent creeping performance issues.",
-        icon: "https://www.peaq.ch/assets/images/icons/heartbeat.png",
+        icon: "/assets/images/icons/heartbeat.png",
       },
       {
         title: "Capacity Analytics",
         description: "Track pool risk, compression effects, and growth trajectories with actionable dashboards.",
-        icon: "https://www.peaq.ch/assets/images/icons/database.png",
+        icon: "/assets/images/icons/database.png",
       },
       {
         title: "Benchmarking",
         description: "Compare array and workload behavior to uncover optimization opportunities across environments.",
-        icon: "https://www.peaq.ch/assets/images/icons/th-list.png",
+        icon: "/assets/images/icons/th-list.png",
       },
     ],
     screenshots: [
-      "https://www.peaq.ch/assets/images/ioportal/dashboard-kpis.png",
-      "https://www.peaq.ch/assets/images/ioportal/dashboard-anomalies.png",
-      "https://www.peaq.ch/assets/images/ioportal/dashboard-comparison.png",
-      "https://www.peaq.ch/assets/images/ioportal/healthcheck.png",
-      "https://www.peaq.ch/assets/images/ioportal/capacity1.png",
-      "https://www.peaq.ch/assets/images/ioportal/benchmark.png",
+      "/assets/images/ioportal/dashboard-kpis.png",
+      "/assets/images/ioportal/dashboard-anomalies.png",
+      "/assets/images/ioportal/dashboard-comparison.png",
+      "/assets/images/ioportal/healthcheck.png",
+      "/assets/images/ioportal/capacity1.png",
+      "/assets/images/ioportal/benchmark.png",
     ],
   },
 };
 
 export async function getSiteContent(): Promise<SiteContent> {
+  const posts = typedData.posts.map((post) => ({
+    ...post,
+    heroImage: {
+      ...post.heroImage,
+      src: toLocalAssetUrl(post.heroImage.src),
+    },
+    bodyHtml: rewriteBodyHtmlAssets(post.bodyHtml),
+  }));
+
+  const authors = typedData.authors.map((author) => ({
+    ...author,
+    image: {
+      ...author.image,
+      src: toLocalAssetUrl(author.image.src),
+    },
+  }));
+
   const menuItems = typedData.menu.map(toInternalMenuItem);
   const routes = getStaticRoutePaths();
 
@@ -136,8 +153,8 @@ export async function getSiteContent(): Promise<SiteContent> {
     menuItems,
     routes,
     blogAliases: typedData.blogAliases,
-    posts: typedData.posts,
-    authors: typedData.authors,
+    posts,
+    authors,
     categories: typedData.categories,
     sourceLabel: "legacy-html",
   };
@@ -155,6 +172,10 @@ export function getStaticRoutePaths() {
   const set = new Set<string>(typedData.routePaths.map((value) => normalizePath(value)));
   set.add("/blogs");
   set.add("/blogs/index");
+  set.add("/impressum");
+  set.add("/datenschutz");
+  set.add("/agb");
+  set.add("/cookie");
 
   const totalPages = getBlogTotalPages(typedData.posts.length);
   for (let page = 2; page <= totalPages; page += 1) {
@@ -325,4 +346,27 @@ function slugToLabel(value: string) {
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
+}
+
+export function toLocalAssetUrl(urlLike: string) {
+  if (!urlLike) return "";
+  if (urlLike.startsWith("/assets/")) return urlLike;
+
+  try {
+    const url = new URL(urlLike);
+    const isLocalAssetHost = url.hostname === "www.peaq.ch" || url.hostname === "peaq.ch";
+    if (isLocalAssetHost && url.pathname.startsWith("/assets/")) {
+      return `${url.pathname}${url.search ?? ""}`;
+    }
+    return urlLike;
+  } catch {
+    return urlLike;
+  }
+}
+
+function rewriteBodyHtmlAssets(html: string) {
+  if (!html) return html;
+  return html
+    .replaceAll("https://www.peaq.ch/assets/", "/assets/")
+    .replaceAll("https://peaq.ch/assets/", "/assets/");
 }

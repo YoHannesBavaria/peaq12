@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { getHomeHighlights } from "@/lib/content";
 import type { RichPost } from "@/types/content";
 import { PostCard } from "@/components/post-card";
@@ -38,13 +38,13 @@ export function HomeView({ posts, sourceLabel }: Props) {
       <section className="feature-grid">
         {highlights.map((item) => (
           <article key={item.title} className="feature-card">
-            <Image
+            <ImageLightbox
               src={item.image}
-              alt={item.title}
+              alt={`${item.title} preview`}
               width={960}
               height={600}
               sizes="(max-width: 1024px) 100vw, 33vw"
-              style={{ width: "100%", height: "auto" }}
+              imageClassName="feature-image"
             />
             <div>
               <p className="card-eyebrow">{item.subtitle}</p>

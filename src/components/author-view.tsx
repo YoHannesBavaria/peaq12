@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { PostCard } from "@/components/post-card";
 import type { RichAuthor, RichPost } from "@/types/content";
 
@@ -12,13 +12,13 @@ export function AuthorView({ author, posts }: Props) {
     <main className="container page-flow">
       <section className="author-hero">
         {author.image.src ? (
-          <Image
+          <ImageLightbox
             src={author.image.src}
             alt={author.image.alt || author.name}
             width={480}
             height={480}
             sizes="(max-width: 980px) 100vw, 220px"
-            style={{ width: "100%", height: "auto" }}
+            imageClassName="author-picture"
           />
         ) : null}
         <div>

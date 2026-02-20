@@ -14,7 +14,15 @@ type Props = {
 export async function generateStaticParams() {
   const content = await getSiteContent();
   return content.routes
-    .filter((route) => route !== "/" && route !== "/library")
+    .filter(
+      (route) =>
+        route !== "/" &&
+        route !== "/library" &&
+        route !== "/impressum" &&
+        route !== "/datenschutz" &&
+        route !== "/agb" &&
+        route !== "/cookie",
+    )
     .map((route) => ({ slug: pathToSlugParts(route) }));
 }
 

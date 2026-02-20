@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { PostCard } from "@/components/post-card";
 import type { RichPost, SolutionSpec } from "@/types/content";
 
@@ -30,14 +31,14 @@ export function SolutionView({ solution, relatedPosts }: Props) {
             ))}
           </div>
         </div>
-        <Image
+        <ImageLightbox
           src={solution.heroImage}
           alt={solution.title}
           className="solution-hero-image"
           width={1280}
           height={720}
           sizes="(max-width: 980px) 100vw, 40vw"
-          style={{ width: "100%", height: "auto" }}
+          imageClassName="solution-hero-picture"
         />
       </section>
 
@@ -63,13 +64,14 @@ export function SolutionView({ solution, relatedPosts }: Props) {
       <section className="gallery-grid">
         {solution.screenshots.map((src) => (
           <figure key={`${solution.id}-${src}`}>
-            <Image
+            <ImageLightbox
               src={src}
               alt={`${solution.title} screenshot`}
               width={1280}
               height={720}
               sizes="(max-width: 1024px) 100vw, 33vw"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              imageClassName="gallery-picture"
+              fillHeight
             />
           </figure>
         ))}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Merriweather } from "next/font/google";
 import { Navigation } from "@/components/navigation";
+import { SiteFooter } from "@/components/site-footer";
 import { getSiteContent } from "@/lib/content";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body className={`${merriweather.variable} ${manrope.variable}`}>
         <Navigation menuItems={content.menuItems} />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

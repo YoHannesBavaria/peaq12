@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ArticleBody } from "@/components/article-body";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { PostCard } from "@/components/post-card";
 import type { RichPost } from "@/types/content";
 
@@ -22,18 +23,18 @@ export function PostView({ post, related }: Props) {
 
         {post.heroImage.src ? (
           <figure className="article-hero-image">
-            <Image
+            <ImageLightbox
               src={post.heroImage.src}
               alt={post.heroImage.alt || post.title}
               width={1280}
               height={720}
               sizes="100vw"
-              style={{ width: "100%", height: "auto" }}
+              imageClassName="article-hero-picture"
             />
           </figure>
         ) : null}
 
-        <div className="article-body" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
+        <ArticleBody html={post.bodyHtml} />
       </article>
 
       {related.length > 0 ? (
